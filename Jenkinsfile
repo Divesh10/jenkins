@@ -2,11 +2,11 @@ pipeline {
 
     environment { 
 
-        registry = "divesh10/tomcat01" 
+        registry = "docker.io/divesh10/tomcat01" 
 
         registryCredential = 'dockerhub_id' 
 
-        dockerImage = 'divesh10/tomcat01' 
+        dockerImage = 'docker.io/divesh10/tomcat01' 
 
     }
 

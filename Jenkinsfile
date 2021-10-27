@@ -2,11 +2,11 @@ pipeline {
 
     environment { 
 
-        registry = "docker.io/praveenkumartn1234/tomcat01" 
+        registry = "docker.io/divesh10/tomcat01" 
 
-        registryCredential = 'docker_id' 
+        registryCredential = 'dockerhub_id' 
 
-        dockerImage = 'docker.io/praveenkumartn1234/tomcat01' 
+        dockerImage = 'docker.io/divesh10/tomcat01' 
 
     }
 
@@ -65,6 +65,19 @@ pipeline {
             }
 
         } 
+        
+		stage ('K8S Deploy') {
+         steps {
+            script {
+                kubernetesDeploy(
+                    configs: 'deployment.yaml',
+                    kubeconfigId: 'kubesecret',
+                    enableConfigSubstitution: false
+                    )           
+               
+            }
+        }
+    }
 
     }
 
